@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 require "active_model/railtie"
@@ -17,7 +17,7 @@ Bundler.require(*Rails.groups)
 module Diary
   class Application < Rails::Application
     config.load_defaults 5.2
-    config.time_zone = 'Asia/Tokyo'
+    config.time_zone = "Asia/Tokyo"
 
     config.generators do |g|
       g.test_framework :rspec,
