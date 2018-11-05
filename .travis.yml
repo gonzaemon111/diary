@@ -1,0 +1,21 @@
+language: ruby
+rvm:
+    - 2.5.1
+    # - ruby-head
+env:
+  global:
+    DEVISE_TOKEN_AUTH_SECRET_KEY="secrets"
+services:
+    - mysql
+before_script:
+    - cp -f config/database.travis.yml config/database.yml
+    - bundle install
+script:
+    - bundle exec rails db:create RAILS_ENV=test
+    - bundle exec rails db:schema:load RAILS_ENV=test
+    - bundle exec rspec --color --require spec_helper --format progress spec
+    - bundle exec rubocop
+after_failure:
+  - "mysql -e 'show databases;'"
+  - "cat ./log/test.log"
+  - "echo $RAILS_ENV"
