@@ -1,1 +1,1 @@
-json.array! @nikkis, partial: 'nikkis/nikki', as: :nikki
+json.array! @nikkis, partial: "nikkis/nikki", as: :nikki

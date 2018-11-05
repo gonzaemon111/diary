@@ -2,7 +2,8 @@ class NikkisController < ApplicationController
   before_action :set_nikki, only: %i[edit show update destroy]
 
   def index
-    @nikkis = Nikki.where("created_at ASC")
+    @nikkis = Nikki.order("created_at ASC")
+    render :index, status: 200
   end
 
   def new
@@ -14,9 +15,7 @@ class NikkisController < ApplicationController
   def show; end
 
   def create
-    logger.debug "ここやで"
     @nikki = Nikki.new(nikki_params)
-    logger.debug "---------------#{@nikki}"
     if @nikki.save
       render :show, status: 201
     else
@@ -52,4 +51,3 @@ class NikkisController < ApplicationController
     )
   end
 end
-
