@@ -1,5 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Nikki, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "validation" do
+    subject { create(:nikki) }
+    it { is_expected.to validate_presence_of(:value) }
+    it { is_expected.to validate_presence_of(:datetime) }
+  end
 end
