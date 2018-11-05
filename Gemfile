@@ -13,6 +13,7 @@ gem "bootstrap_form"
 gem "bullet"
 gem "cancancan"
 gem "chartkick"
+gem "config"
 gem "devise"
 gem "devise_invitable"
 gem "dotenv-rails"
@@ -55,6 +56,7 @@ group :development, :test do
   gem "reek"
   gem "rspec-rails"
   gem "rubocop"
+  gem "shoulda-matchers"
 end
 
 group :development do
