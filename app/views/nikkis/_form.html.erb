@@ -1,0 +1,27 @@
+<%= form_with(model: nikki, local: true) do |form| %>
+  <% if nikki.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(nikki.errors.count, "error") %> prohibited this nikki from being saved:</h2>
+
+      <ul>
+      <% nikki.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :datetime %>
+    <%= form.datetime_select :datetime %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
