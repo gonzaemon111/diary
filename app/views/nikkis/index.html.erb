@@ -1,29 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="nikki_index">
+  <p id="notice"><%= notice %></p>
+  <h1>Nikkis</h1>
 
-<h1>Nikkis</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Value</th>
-      <th>Datetime</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @nikkis.each do |nikki| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= nikki.value %></td>
-        <td><%= nikki.datetime %></td>
-        <td><%= link_to 'Show', nikki %></td>
-        <td><%= link_to 'Edit', edit_nikki_path(nikki) %></td>
-        <td><%= link_to 'Destroy', nikki, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Value</th>
+        <th>Datetime</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @nikkis.each do |nikki| %>
+        <tr>
+          <td><%= nikki.value %></td>
+          <td><%= nikki.datetime %></td>
+          <td><%= link_to 'Show', nikki, class: "btn btn-info" %></td>
+          <td><%= link_to 'Edit', edit_nikki_path(nikki), class: "btn btn-light" %></td>
+          <td><%= link_to 'Destroy', nikki, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Nikki', new_nikki_path %>
+  <br>
+
+  <%= link_to 'New Nikki', new_nikki_path, class: "btn btn-primary"%>
+</div>

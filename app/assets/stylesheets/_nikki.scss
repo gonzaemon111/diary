@@ -1,0 +1,24 @@
+body {
+  .navbar {
+    background-color: #e3f2fd;
+  }
+  .nikki_index {
+    text-align: center;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  .form_nikki {
+    text-align: center;
+    form {
+      .field {
+        textarea {
+          overflow: auto;
+          resize: vertical;
+          height: 400px;
+          width: 700px;
+        }
+      }
+    }
+  }
+}
