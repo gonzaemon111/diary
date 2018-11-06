@@ -35,3 +35,16 @@ Things you may want to cover:
 * Deployment instructions
 
   Heroku
+
+
+* 開発
+
+  一時的な外部サーバ : ngrok
+  ```
+  $ brew install ngrok
+  $ brew cask install ngrok (上がダメなら)
+  ```
+
+  ```
+  $ ngrok http 3000
+  ```
