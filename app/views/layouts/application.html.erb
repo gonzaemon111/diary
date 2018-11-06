@@ -4,7 +4,7 @@
     <title>Diary</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag('book.ico') %>
+    <%= favicon_link_tag('favicon.ico') %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -24,7 +24,7 @@
             <a class="nav-link" href="#">Link</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <a class="nav-link" href="#">Disabled</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -34,5 +34,8 @@
       </div>
     </nav>
     <%= yield %>
+    <div class="footer">
+      <a class="btn btn-secondary" href="https://icons8.jp" target="_new">faviconはここで作成しました</a>
+    </div>
   </body>
 </html>

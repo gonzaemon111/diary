@@ -394,6 +394,7 @@ Lint/Void:
 ##################### Metrics ##################################
 
 Metrics/BlockLength:
+  Max: 35
   Exclude:
     - 'spec/**/*'
     - 'config/**/**'
