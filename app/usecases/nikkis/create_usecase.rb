@@ -1,5 +1,5 @@
 module Usecases
-  module nikkis
+  module Nikkis
     class CreateUsecase
       def initialize(nikki)
         @nikki = nikki
