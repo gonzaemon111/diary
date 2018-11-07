@@ -10,7 +10,7 @@ module Api
           config.channel_secret = ENV["LINE_CHANNEL_SECRET"] || Settings.line.channel_secret
           config.channel_token = ENV["LINE_CHANNEL_TOKEN"] || Settings.line.channel_token
         }
-        @user_id = Settings.line.user_id # あとはここだけ、修正する必要がある。
+        @user_id = ENV["LINE_USER_ID"] || Settings.line.user_id # あとはここだけ、修正する必要がある。
       end
 
       def execute
