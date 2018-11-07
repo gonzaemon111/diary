@@ -5,6 +5,7 @@ rvm:
 env:
   global:
     DEVISE_TOKEN_AUTH_SECRET_KEY="secrets"
+    LINE_USER_ID="Uf126f218c4dc369b22563edd91e0c09a"
 services:
     - mysql
 before_script:

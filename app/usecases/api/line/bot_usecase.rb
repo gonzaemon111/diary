@@ -1,3 +1,5 @@
+require "line/bot"
+
 module Api
   module Line
     class BotUsecase
@@ -27,7 +29,7 @@ module Api
             when ::Line::Bot::Event::MessageType::Text
               message = {
                 type: "text",
-                text: "これはボットですよ"
+                text: "#{event.message["text"]}\nって送ってくれてありがとう💙💚💛💜💗🤗"
               }
               @client.reply_message(event["replyToken"], message)
             when ::Line::Bot::Event::MessageType::Image
