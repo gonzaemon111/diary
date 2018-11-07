@@ -8,7 +8,9 @@ module Api
         @value = nikki[:value]
         @client ||= ::Line::Bot::Client.new { |config|
           Rails.logger.debug "config ------------------------- #{config}"
+          Rails.logger.debug "config.nil? ------------------------- #{config.nil?}"
           config.channel_secret = ENV["LINE_CHANNEL_SECRET"] || Settings.line.channel_secret
+          Rails.logger.debug "config.channel_secret ------------------------- #{config.channel_secret}"
           config.channel_token = ENV["LINE_CHANNEL_TOKEN"] || Settings.line.channel_token
         }
         @user_id = ENV["LINE_USER_ID"] || Settings.line.user_id # あとはここだけ、修正する必要がある。
