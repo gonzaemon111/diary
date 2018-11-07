@@ -17,6 +17,7 @@ class NikkisController < ApplicationController
   def create
     @nikki = Nikki.new(nikki_params)
     if @nikki.save
+      push_messages(@nikki).execute
       render :show, status: 201
     else
       render json: @nikki.errors.full_messages, status: :unprocessable_entity
@@ -30,6 +31,7 @@ class NikkisController < ApplicationController
 
   def update
     if @nikki.update(nikki_params)
+      push_messages(@nikki)
       render :show, status: 204
     else
       render json: @nikki.errors.full_messages, status: :unprocessable_entity
@@ -49,5 +51,9 @@ class NikkisController < ApplicationController
       :value,
       :datetime
     )
+  end
+
+  def push_messages(nikki)
+    Api::Line::PushMessageUsecase.new(nikki)
   end
 end
