@@ -7,6 +7,7 @@ module Api
         @datetime = nikki[:datetime]
         @value = nikki[:value]
         @client ||= ::Line::Bot::Client.new { |config|
+          Rails.logger.debug "config ------------------------- #{config}"
           config.channel_secret = ENV["LINE_CHANNEL_SECRET"] || Settings.line.channel_secret
           config.channel_token = ENV["LINE_CHANNEL_TOKEN"] || Settings.line.channel_token
         }
