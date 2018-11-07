@@ -1,3 +1,5 @@
+require "line/bot"
+
 module Api
   module Line
     class PushMessageUsecase
