@@ -1,9 +1,28 @@
 body {
+  height: 100%;
   .navbar {
     background-color: #e3f2fd;
+    .navbar-collapse {
+      display: flex;
+      .navbar-nav {
+        .navbar_list {
+          padding-right: 1em
+        }
+      }
+      .navbar-brand {
+        width: 1.5em;
+        .menu_icon {
+          max-width: 100%;
+        }
+      }
+    }
   }
   .nikki_index {
     text-align: center;
+    padding: 3%;
+    table {
+      margin: auto;
+    }
   }
   h1 {
     font-size: 2.5rem;
@@ -21,4 +40,19 @@ body {
       }
     }
   }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    background-color: lightblue;
+    width: 100%;
+    height: 13%;
+  }
+}
+.margin_auto {
+  margin: auto;
+  padding: 2.3em;
+}
+
+.index_new_diary_btn {
+  padding-top: 1em
 }
