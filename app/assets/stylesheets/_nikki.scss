@@ -1,6 +1,15 @@
 body {
   .navbar {
     background-color: #e3f2fd;
+    .navbar-collapse {
+      display: flex;
+      .navbar-brand {
+        width: 1.5em;
+        .menu_icon {
+          max-width: 100%;
+        }
+      }
+    }
   }
   .nikki_index {
     text-align: center;
