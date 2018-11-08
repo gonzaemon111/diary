@@ -19,14 +19,14 @@
           <%= image_tag('book.png',class:"menu_icon") %>
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item active navbar_list">
+            <%= link_to 'Home', root_path,{ :class => "root_path_btn nav-link" } %>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+          <li class="nav-item active navbar_list">
+            <%= link_to 'NewDiary', new_nikki_path,{ :class => "new_diary_btn nav-link btn btn-outline-primary my-2 my-sm-0" } %>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+          <li class="nav-item active navbar_list">
+            <%= link_to 'DisAbled', new_nikki_path,{ :class => "new_diary_btn nav-link btn btn-outline-success my-2 my-sm-0" } %>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -36,5 +36,10 @@
       </div>
     </nav>
     <%= yield %>
+    <div class="footer">
+      <div class="margin_auto">
+        <a class="btn btn-secondary" href="https://icons8.jp" target="_new">faviconはここで作成しました</a>
+      </div>
+    </div>
   </body>
 </html>
