@@ -15,7 +15,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="#">Hidden brand</a>
+        <a class="navbar-brand" href="#">
+          <%= image_tag('book.png',class:"menu_icon") %>
+        </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -24,7 +26,7 @@
             <a class="nav-link" href="#">Link</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Disabled</a>
+            <a class="nav-link disabled" href="#">Disabled</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -34,8 +36,5 @@
       </div>
     </nav>
     <%= yield %>
-    <div class="footer">
-      <a class="btn btn-secondary" href="https://icons8.jp" target="_new">faviconはここで作成しました</a>
-    </div>
   </body>
 </html>
