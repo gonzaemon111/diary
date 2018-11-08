@@ -3,6 +3,11 @@ body {
     background-color: #e3f2fd;
     .navbar-collapse {
       display: flex;
+      .navbar-nav {
+        .navbar_list {
+          padding-right: 1em
+        }
+      }
       .navbar-brand {
         width: 1.5em;
         .menu_icon {
@@ -13,6 +18,10 @@ body {
   }
   .nikki_index {
     text-align: center;
+    padding: 3%;
+    table {
+      margin: auto;
+    }
   }
   h1 {
     font-size: 2.5rem;
