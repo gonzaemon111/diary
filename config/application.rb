@@ -14,6 +14,8 @@ require "slack"
 
 Bundler.require(*Rails.groups)
 
+Dotenv::Railtie.load
+
 module Diary
   class Application < Rails::Application
     config.load_defaults 5.2
