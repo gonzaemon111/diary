@@ -1,19 +1,19 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
-  valid_emails = %w(
+  valid_emails = %w[
     user@foo.COM
     A_US-ER@f.b.org
     frst.lst@foo.jp
     a+b@baz.cn
-  )
-  invalid_emails = %w(
+  ]
+  invalid_emails = %w[
     user@foo,com
     user_at_foo.org
     example.user@foo.
     foo@bar_baz.com
     foo@bar+baz.com
-  )
+  ]
   context "validation" do
     subject { create(:user) }
     it { is_expected.to validate_presence_of(:name) }
