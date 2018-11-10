@@ -4,7 +4,7 @@ class OmniauthProfile < ApplicationRecord
   validates :name, presence: true
   validates :provider, presence: true
   validates :token, presence: true
-  validates :secret, presence: true
-  validates :created_at, presence: true
-  validates :updated_at, presence: true
+  validates :refresh_token, presence: true
+
+  enum provider: { line: 0, twitter: 1 }
 end
