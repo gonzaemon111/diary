@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   has_many :omniauth_profiles, dependent: :destroy
 
-  #登録時にemailを不要とする オーバーライド
+  # 登録時にemailを不要とする オーバーライド
   def email_required?
     false
   end

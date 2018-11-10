@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe OmniauthProfile, type: :model do
   context "validation" do
@@ -8,8 +8,6 @@ RSpec.describe OmniauthProfile, type: :model do
     it { is_expected.to validate_presence_of(:provider) }
     it { is_expected.to validate_presence_of(:token) }
     it { is_expected.to validate_presence_of(:refresh_token) }
-    it { is_expected.to validate_presence_of(:created_at) }
-    it { is_expected.to validate_presence_of(:updated_at) }
   end
 
   context "association" do

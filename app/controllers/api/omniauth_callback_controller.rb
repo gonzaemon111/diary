@@ -5,9 +5,10 @@ module Api
     end
 
     private
+
     def line_omniauth
-      current_user_id = current_user ? current_user : nil
-      result = Api::Line::OmniauthUsecase.new(request.env['omniauth.auth'], current_user_id).execute
+      current_user_id = current_user || nil
+      result = Api::Line::OmniauthUsecase.new(request.env["omniauth.auth"], current_user_id).execute
       @user = result[:user]
       if @user.persisted? || result[:omniauth_profile].persisted?
         # head :ok
@@ -18,9 +19,8 @@ module Api
       end
     end
 
-    def after_sign_in_path_for
-      #リダイレクトしたいパス
+    def after_sign_in_path_for(_resource)
       root_path
-     end
+    end
   end
 end
