@@ -2,7 +2,6 @@ module Api
   module Line
     class OmniauthUsecase < Devise::OmniauthCallbacksController
       def initialize(auth, current_user_id)
-        Rails.logger.debug "ここ3"
         @auth = auth
         @current_user_id = current_user_id
       end
@@ -24,13 +23,12 @@ module Api
       private
 
       def omniauth_sign_up(auth)
-        email = auth["info"]["email"] || nil
         user =
           if @current_user_id
             User.find(@curret_user_id)
           else
             User.create!(
-              email: email,
+              email: auth["info"]["email"] || nil,
               name: auth["info"]["name"],
               password: Devise.friendly_token[0, 20],
               sign_in_count: 0,
@@ -47,7 +45,7 @@ module Api
           name: auth["info"]["name"],
           image: auth["info"]["image"],
           description: auth["info"]["description"],
-          email: email
+          email: auth["info"]["email"] || nil
         )
 
         { user: user, omniauth_profile: @omniauth_profile }
