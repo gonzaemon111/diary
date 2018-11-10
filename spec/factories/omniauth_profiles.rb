@@ -6,7 +6,7 @@ FactoryBot.define do
     provider { 0 }
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, "public/images/book.png")) }
     description { "MyString" }
-    email { "MyString" }
+    email { "test@test.com" }
     token { "MyString" }
     refresh_token { "MyString" }
     created_at { Faker::Time.between(5.days.ago, 3.days.ago, :all) }
