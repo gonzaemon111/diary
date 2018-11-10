@@ -7,7 +7,7 @@ RSpec.describe OmniauthProfile, type: :model do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:provider) }
     it { is_expected.to validate_presence_of(:token) }
-    it { is_expected.to validate_presence_of(:secret) }
+    it { is_expected.to validate_presence_of(:refresh_token) }
     it { is_expected.to validate_presence_of(:created_at) }
     it { is_expected.to validate_presence_of(:updated_at) }
   end
