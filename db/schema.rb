@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_09_090134) do
+ActiveRecord::Schema.define(version: 2018_11_09_121729) do
 
   create_table "nikkis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "value", null: false
@@ -19,6 +19,29 @@ ActiveRecord::Schema.define(version: 2018_11_09_090134) do
     t.datetime "updated_at", null: false
     t.index ["datetime"], name: "index_nikkis_on_datetime"
     t.index ["value"], name: "index_nikkis_on_value"
+  end
+
+  create_table "omniauth_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "uid", null: false
+    t.string "name", null: false
+    t.integer "provider", default: 0, null: false
+    t.string "image_url"
+    t.string "description"
+    t.string "email"
+    t.string "token", null: false
+    t.string "secret", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["description"], name: "index_omniauth_profiles_on_description"
+    t.index ["email"], name: "index_omniauth_profiles_on_email"
+    t.index ["image_url"], name: "index_omniauth_profiles_on_image_url"
+    t.index ["name"], name: "index_omniauth_profiles_on_name"
+    t.index ["provider"], name: "index_omniauth_profiles_on_provider"
+    t.index ["secret"], name: "index_omniauth_profiles_on_secret"
+    t.index ["token"], name: "index_omniauth_profiles_on_token"
+    t.index ["uid"], name: "index_omniauth_profiles_on_uid"
+    t.index ["user_id"], name: "index_omniauth_profiles_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -49,4 +72,5 @@ ActiveRecord::Schema.define(version: 2018_11_09_090134) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "omniauth_profiles", "users"
 end
