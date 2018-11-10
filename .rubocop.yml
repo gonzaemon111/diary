@@ -404,7 +404,7 @@ Metrics/BlockLength:
 
 # 30 まではギリギリ許せる範囲だった
 Metrics/AbcSize:
-  Max: 30
+  Max: 50
 
 # 6 は強すぎるので緩める
 Metrics/CyclomaticComplexity:
