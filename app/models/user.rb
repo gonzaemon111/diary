@@ -11,10 +11,8 @@ class User < ApplicationRecord
          omniauth_providers: %i[line],
          authentication_keys: %i[name]
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
-
+  validates :email, format: { with: Constants::VALID_EMAIL_REGEX, if: :email_present? }
   validates :name, presence: true, length: { minimum: 1 }
-  validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 6 }, confirmation: true
   validates :sign_in_count, presence: true, numericality: { only_integer: true }
   validates :failed_attempts, presence: true, numericality: { only_integer: true }
@@ -31,5 +29,13 @@ class User < ApplicationRecord
 
   def email_changed?
     false
+  end
+
+  def will_save_change_to_email?
+    false
+  end
+
+  def email_present?
+    email.present?
   end
 end

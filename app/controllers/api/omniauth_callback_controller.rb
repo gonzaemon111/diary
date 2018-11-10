@@ -11,10 +11,8 @@ module Api
       result = Api::Line::OmniauthUsecase.new(request.env["omniauth.auth"], current_user_id).execute
       @user = result[:user]
       if @user.persisted? || result[:omniauth_profile].persisted?
-        # head :ok
         sign_in_and_redirect @user
       else
-        logger.debug "こっちか"
         head :unprocessable_entity
       end
     end
