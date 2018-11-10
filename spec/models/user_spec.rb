@@ -37,4 +37,9 @@ RSpec.describe User, type: :model do
     it { is_expected.to allow_value(*valid_emails).for(:email) }
     it { is_expected.not_to allow_value(*invalid_emails).for(:email) }
   end
+
+  context "association" do
+    subject { create(:user) }
+    it { is_expected.to have_many(:omniauth_profiles) }
+  end
 end
