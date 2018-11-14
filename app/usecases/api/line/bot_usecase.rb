@@ -20,32 +20,21 @@ module Api
         events = @client.parse_events_from(body)
 
         events.each { |event|
+          # Rails.logger.debug "ばいえうbv； ------ #{JSON.parse(event)}"
           case event
           when ::Line::Bot::Event::Message
-            case event.type
-            when ::Line::Bot::Event::MessageType::Text
-              message = {
-                type: "text",
-                text: "#{event.message["text"]}\nって送ってくれてありがとう💙💚💛💜💗🤗"
-              }
-              @client.reply_message(event["replyToken"], message)
-            when ::Line::Bot::Event::MessageType::Image
-              message = {
-                type: "text",
-                text: "ごめん、画像はぼっとできないんだ、、、"
-              }
-              @client.reply_message(event["replyToken"], message)
-            when ::Line::Bot::Event::MessageType::Sticker
-              message = {
-                type: "sticker",
-                packageId: "1",
-                stickerId: event.message["stickerId"]
-              }
-              @client.reply_message(event["replyToken"], message)
-            end
+            message = case event.type
+                      when ::Line::Bot::Event::MessageType::Text
+                        Api::Line::Messages::Text.new(event).execute
+                      when ::Line::Bot::Event::MessageType::Image
+                        Api::Line::Messages::Image.new(event).execute
+                      when ::Line::Bot::Event::MessageType::Sticker
+                        Api::Line::Messages::Sticker.new(event).execute
+                      end
+            @client.reply_message(event["replyToken"], message)
           end
         }
-        "ok"
+        true
       end
 
       private
