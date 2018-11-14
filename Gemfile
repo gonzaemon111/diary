@@ -44,6 +44,7 @@ gem "sidekiq"
 gem "sidekiq-failures"
 gem "slack-api"
 gem "slack-notifier"
+gem "unicorn"
 gem "whenever"
 
 group :development, :test do
