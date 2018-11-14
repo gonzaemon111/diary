@@ -48,3 +48,16 @@ Things you may want to cover:
   ```
   $ ngrok http 3000
   ```
+  
+* Sidekiq
+
+  ```
+  $ bundle exec sidekiq -C config/sidekiq.yml
+  ```
+  
+* test
+
+  ```
+  $ bundle exec rspec spec/.
+  $ bundle exec rubocop -a
+  ```
