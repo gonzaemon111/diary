@@ -20,18 +20,27 @@ module Api
         events = @client.parse_events_from(body)
 
         events.each { |event|
-          # Rails.logger.debug "ばいえうbv； ------ #{JSON.parse(event)}"
           case event
+          when ::Line::Bot::Event::Postback
+            next
+          when ::Line::Bot::Event::Follow
+            next
+          when ::Line::Bot::Event::Join
+            next
+          when ::Line::Bot::Event::Beacon
+            next
           when ::Line::Bot::Event::Message
             message = case event.type
                       when ::Line::Bot::Event::MessageType::Text
-                        Api::Line::Messages::Text.new(event).execute
+                        Api::Line::Messages::Templates::ButtonTemplate.new.execute
                       when ::Line::Bot::Event::MessageType::Image
                         Api::Line::Messages::Image.new(event).execute
                       when ::Line::Bot::Event::MessageType::Sticker
                         Api::Line::Messages::Sticker.new(event).execute
                       end
             @client.reply_message(event["replyToken"], message)
+          else
+            raise "予期せぬエラーが起こりました。"
           end
         }
         true
