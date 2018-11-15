@@ -4,7 +4,7 @@ module Api
       module Templates
         class ConfirmTemplate
           def initialize; end
-  
+
           def execute
             {
               "type": "template",
