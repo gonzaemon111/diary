@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_09_121729) do
+ActiveRecord::Schema.define(version: 2018_11_16_034541) do
 
   create_table "nikkis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "value", null: false
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 2018_11_09_121729) do
     t.index ["token"], name: "index_omniauth_profiles_on_token"
     t.index ["uid"], name: "index_omniauth_profiles_on_uid"
     t.index ["user_id"], name: "index_omniauth_profiles_on_user_id"
+  end
+
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "uid", null: false
+    t.integer "provider", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["uid", "provider"], name: "index_profiles_on_uid_and_provider"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
