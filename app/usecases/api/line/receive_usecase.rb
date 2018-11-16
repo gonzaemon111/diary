@@ -16,7 +16,7 @@ module Api
           error 400 do "Bad Request" end
         end
 
-        events = @client.parse_events_from(body)
+        # events = @client.parse_events_from(body)
 
         @params["events"].each { |event|
           profiles = []
