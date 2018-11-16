@@ -49,6 +49,17 @@ Things you may want to cover:
   $ ngrok http 3000
   ```
   
+* Redis
+https://qiita.com/sawa-@github/items/1f303626bdc219ea8fa1
+
+```
+  redisサーバーの立ち上げ
+  $ redis-server /usr/local/etc/redis.conf
+
+  redis に入る
+  $  redis-cli
+```
+  
 * Sidekiq
 
   ```
@@ -144,6 +155,111 @@ Message::Textの場合
           "contentProvider"=>{
             "type"=>"line"
           }
+        }
+      }
+    ],
+    "destination"=>"Ueaafc8e4e9a87d8115d77e2198cad696"
+  }
+}
+```
+
+
+### Followイベント
+
+```
+{
+  "events"=>[
+    {
+      "type"=>"follow",
+      "replyToken"=>"5c24eb5d27ca4cba834681205c92542a",
+      "source"=>{
+        "userId"=>"Ud01d8e3648823376d3f5ba6c6345d392",
+        "type"=>"user"
+       },
+       "timestamp"=>1542288602614
+    }
+  ],
+  "destination"=>"Ueaafc8e4e9a87d8115d77e2198cad696",
+  "line"=>{
+    "events"=>[
+      {
+        "type"=>"follow",
+        "replyToken"=>"5c24eb5d27ca4cba834681205c92542a",
+        "source"=>{
+          "userId"=>"Ud01d8e3648823376d3f5ba6c6345d392",
+          "type"=>"user"
+        },
+        "timestamp"=>1542288602614
+      }
+    ],
+    "destination"=>"Ueaafc8e4e9a87d8115d77e2198cad696"
+  }
+}
+
+```
+
+### Unfollowイベント
+
+```
+{
+  "events"=>[
+    {
+      "type"=>"unfollow",
+      "source"=>{
+        "userId"=>"Uf126f218c4dc369b22563edd91e0c09a",
+        "type"=>"user"
+      },
+      "timestamp"=>1542358314849
+    }
+  ],
+  "destination"=>"Ueaafc8e4e9a87d8115d77e2198cad696",
+  "line"=>{
+    "events"=>[
+      {
+        "type"=>"unfollow",
+        "source"=>{
+          "userId"=>"Uf126f218c4dc369b22563edd91e0c09a",
+          "type"=>"user"
+        },
+        "timestamp"=>1542358314849
+      }
+    ],
+    "destination"=>"Ueaafc8e4e9a87d8115d77e2198cad696"
+  }
+}
+```
+
+### Postbackイベント
+
+```
+{
+  "events"=>[
+    {
+      "type"=>"postback",
+      "replyToken"=>"60d73c659c0c471388764245ea39f430",
+      "source"=>{
+        "userId"=>"Uf126f218c4dc369b22563edd91e0c09a",
+        "type"=>"user"
+      },
+      "timestamp"=>1542357622381,
+      "postback"=>{
+        "data"=>"no"
+      }
+    }
+  ],
+  "destination"=>"Ueaafc8e4e9a87d8115d77e2198cad696",
+  "line"=>{
+    "events"=>[
+      {
+        "type"=>"postback",
+        "replyToken"=>"60d73c659c0c471388764245ea39f430",
+        "source"=>{
+          "userId"=>"Uf126f218c4dc369b22563edd91e0c09a",
+          "type"=>"user"
+        },
+        "timestamp"=>1542357622381,
+        "postback"=>{
+          "data"=>"no"
         }
       }
     ],
