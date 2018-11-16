@@ -34,6 +34,8 @@ module Api
               :type,
               :id,
               :text,
+              :packageId,
+              :stickerId,
               {
                 contentProvider: %i[type]
               }
