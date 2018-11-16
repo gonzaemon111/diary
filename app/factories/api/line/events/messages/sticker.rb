@@ -11,7 +11,7 @@ module Api
             {
               type: "sticker",
               packageId: "1",
-              stickerId: @event.message["stickerId"]
+              stickerId: @event["message"]["stickerId"]
             }
           end
         end

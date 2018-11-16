@@ -48,6 +48,8 @@ module Api
           email: auth["info"]["email"] || nil
         )
 
+        Api::Line::PushSignupUsecase.new(@omniauth_profile.uid).execute
+
         { user: user, omniauth_profile: @omniauth_profile }
       end
 
