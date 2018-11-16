@@ -8,7 +8,6 @@ module Api
       end
 
       def execute
-        Rails.logger.debug "ストロングパラメータ #{@params["destination"]}"
         body = @request.body.read
 
         signature = @request.env["HTTP_X_LINE_SIGNATURE"]
@@ -19,18 +18,12 @@ module Api
 
         events = @client.parse_events_from(body)
 
-        Rails.logger.debug "---------#{events.class}"
-
         @params["events"].each { |event|
           profiles = []
-          Rails.logger.debug "#{profiles}"
           profile = Profile
                       .where(uid: event["source"]["userId"])
                       .where(provider: 0)
                       .first
-
-          Rails.logger.debug "#{profile.nil?}"
-          Rails.logger.debug "#{profile}" if profile.present?
 
           unless profile.present?
             new_profile = Profile.create!(uid: event["source"]["userId"],provider: 0)
