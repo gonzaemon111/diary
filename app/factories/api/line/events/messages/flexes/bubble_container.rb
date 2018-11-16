@@ -5,7 +5,7 @@ module Api
         module Flexes
           class BubbleContainer
             def initialize; end
-  
+
             def execute
               {
                 "type": "bubble",

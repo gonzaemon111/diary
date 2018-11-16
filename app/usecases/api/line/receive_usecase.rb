@@ -26,7 +26,7 @@ module Api
                       .first
 
           unless profile.present?
-            new_profile = Profile.create!(uid: event["source"]["userId"],provider: 0)
+            new_profile = Profile.create!(uid: event["source"]["userId"], provider: 0)
             profiles.push new_profile
           end
           result = Api::Line::Events::BaseFactory.new(event, @client).execute

@@ -6,7 +6,7 @@ module Api
           def initialize(event)
             @event = event
           end
-  
+
           def execute
             {
               type: "sticker",

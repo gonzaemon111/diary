@@ -5,7 +5,7 @@ module Api
         module Templates
           class ButtonTemplate
             def initialize; end
-  
+
             def execute
               {
                 "type": "template",
