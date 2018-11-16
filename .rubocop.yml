@@ -3,7 +3,7 @@
 
 # 自動生成されるものはチェック対象から除外する
 AllCops:
-  TargetRubyVersion: 2.5.0
+  TargetRubyVersion: 2.5
   Exclude:
     - "vendor/**/*" # rubocop config/default.yml
     - "db/schema.rb"
