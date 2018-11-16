@@ -5,27 +5,25 @@ module Api
     module Events
       class BaseFactory
         def initialize(event, client)
-          Rails.logger.debug "yここあで"
           @event = event
           @client = client
         end
 
         def execute
           case @event["type"]
-          when ::Line::Bot::Event::Postback
+          when "postback"
             Api::Line::Events::Postbacks::Base.new(@event, @client).execute
-          when ::Line::Bot::Event::Leave
+          when "leave"
             Api::Line::Events::Leaves::Base.new(@event, @client).execute
-          when ::Line::Bot::Event::Follow
+          when "follow"
             Api::Line::Events::Follows::Base.new(@event, @client).execute
-          when ::Line::Bot::Event::Unfollow
+          when "unfollow"
             Api::Line::Events::Unfollows::Base.new(@event, @client).execute
-          when ::Line::Bot::Event::Join
+          when "join"
             Api::Line::Events::Joins::Base.new(@event, @client).execute
-          when ::Line::Bot::Event::Beacon
+          when "beacon"
             Api::Line::Events::Beacons::Base.new(@event, @client).execute
           when "message"
-            Rails.logger.debug "ここやで"
             Api::Line::Events::Messages::Base.new(@event, @client).execute
           else
             return false
