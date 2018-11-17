@@ -34,8 +34,6 @@ module Api
           message.concat mes
         end
 
-        Rails.logger.debug "message.class -- #{message.class}"
-
         return false if message.class != String
 
         message
@@ -57,15 +55,9 @@ module Api
       def push_messages(nikki)
         push_message =
           if nikki
-            {
-              type: "text",
-              text: "今日の日記☺️\n--------------------------\n日時:#{nikki.datetime}\n\n#{nikki.value}"
-            }
+            Api::Line::Events::Messages::Flexes::BubbleContainer.new(nikki).execute
           else
-            {
-              type: "text",
-              text: "すみません🙇‍\n予期せぬエラーが起きました。"
-            }
+            Api::Line::Events::Messages::ErrorText.new.execute
           end
         @client.push_message(@uid, push_message)
       end
