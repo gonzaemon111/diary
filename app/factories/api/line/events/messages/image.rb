@@ -5,7 +5,7 @@ module Api
     module Events
       module Messages
         class Image
-          def initialize(event, @client)
+          def initialize(event, client)
             @event = event
             @client = client
           end
