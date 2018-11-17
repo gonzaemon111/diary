@@ -21,6 +21,7 @@ class User < ApplicationRecord
   validates :reset_password_token, uniqueness: true
 
   has_many :omniauth_profiles, dependent: :destroy
+  has_many :nikkis, dependent: :destroy
 
   # 登録時にemailを不要とする オーバーライド
   def email_required?
