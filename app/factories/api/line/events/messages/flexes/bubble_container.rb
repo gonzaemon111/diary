@@ -4,7 +4,6 @@ module Api
       module Messages
         module Flexes
           class BubbleContainer
-
             IMAGE_URL = [
               "https://cdn.pixabay.com/photo/2018/05/13/17/08/notebook-3397135__480.jpg",
               "https://cdn.pixabay.com/photo/2015/05/31/14/23/organizer-791939__480.jpg",
@@ -23,7 +22,7 @@ module Api
             end
 
             def execute
-              {  
+              {
                 "type": "flex",
                 "altText": "this is a flex message",
                 "contents": {
