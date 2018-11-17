@@ -1,5 +1,3 @@
-require "line/bot"
-
 module Api
   module Line
     module Events
@@ -11,15 +9,14 @@ module Api
           end
 
           def execute
-            message = case @event["message"]["type"]
-                      when "text"
-                        Api::Line::Events::Messages::Templates::ButtonTemplate.new.execute
-                      when "image"
-                        Api::Line::Events::Messages::Image.new(@event).execute
-                      when "sticker"
-                        Api::Line::Events::Messages::Sticker.new(@event).execute
-                      end
-            @client.reply_message(@event["replyToken"], message)
+            case @event["message"]["type"]
+            when "text"
+              Api::Line::Events::Messages::Text.new(@event, @client).execute
+            when "image"
+              Api::Line::Events::Messages::Image.new(@event, @client).execute
+            when "sticker"
+              Api::Line::Events::Messages::Sticker.new(@event, @client).execute
+            end
           end
         end
       end
