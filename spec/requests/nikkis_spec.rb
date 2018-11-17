@@ -28,11 +28,13 @@ RSpec.describe "Nikkis", type: :request do
     end
   end
   describe "POST /nikkis" do
+    let(:user) { create(:user) }
     let(:param) {
       {
         nikki: {
           value: "test1",
-          datetime: "2018-11-04 20:46:57"
+          datetime: "2018-11-04 20:46:57",
+          user_id: user.id
         }
       }
     }
