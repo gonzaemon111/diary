@@ -46,7 +46,7 @@ module Api
 
         nikki = Nikki.create!(
           value: message,
-          datetime: DateTime.now.in_time_zone,
+          datetime: Time.now.in_time_zone,
           user_id: user.id
         )
         return false unless nikki
@@ -55,17 +55,18 @@ module Api
       end
 
       def push_messages(nikki)
-        push_message = if nikki
-                         {
-                           type: "text",
-                           text: "今日の日記☺️\n--------------------------\n日時:#{nikki.datetime}\n\n#{nikki.value}"
-                         }
-                       else
-                         {
-                           type: "text",
-                           text: "すみません🙇‍\n予期せぬエラーが起きました。"
-                         }
-                        end
+        push_message =
+          if nikki
+            {
+              type: "text",
+              text: "今日の日記☺️\n--------------------------\n日時:#{nikki.datetime}\n\n#{nikki.value}"
+            }
+          else
+            {
+              type: "text",
+              text: "すみません🙇‍\n予期せぬエラーが起きました。"
+            }
+          end
         @client.push_message(@uid, push_message)
       end
     end
