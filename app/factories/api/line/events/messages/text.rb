@@ -12,6 +12,7 @@ module Api
 
           def execute
             return Api::Line::PushDiaryUsecase.new(@event["message"]["text"], @event["source"]["userId"]).execute if is_nikki?
+
             message = {
               type: "text",
               text: "#{@event["message"]["text"]}\nって送ってくれてありがとう💙💚💛💜💗🤗"
@@ -20,6 +21,7 @@ module Api
           end
 
           private
+
           def is_nikki?
             @event["message"]["text"].include?("nikki") ||
               @event["message"]["text"].include?("日記") ||

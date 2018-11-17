@@ -26,7 +26,7 @@ module Api
         elsif @nikki.include?("nikki")
           messages.concat(@nikki.split("nikki"))
         elsif @nikki.include?("diary")
-          messages.concat(@nikki.split("diary")) 
+          messages.concat(@nikki.split("diary"))
         end
 
         message = ""
@@ -37,6 +37,7 @@ module Api
         Rails.logger.debug "message.class -- #{message.class}"
 
         return false if message.class != String
+
         message
       end
 
@@ -49,20 +50,21 @@ module Api
           user_id: user.id
         )
         return false unless nikki
+
         nikki
       end
 
       def push_messages(nikki)
         push_message = if nikki
-                          {
-                            type: "text",
-                            text: "今日の日記☺️\n--------------------------\n日時:#{nikki.datetime}\n\n#{nikki.value}"
-                          }
-                        else
-                          {
-                            type: "text",
-                            text: "すみません🙇‍\n予期せぬエラーが起きました。"
-                          }
+                         {
+                           type: "text",
+                           text: "今日の日記☺️\n--------------------------\n日時:#{nikki.datetime}\n\n#{nikki.value}"
+                         }
+                       else
+                         {
+                           type: "text",
+                           text: "すみません🙇‍\n予期せぬエラーが起きました。"
+                         }
                         end
         @client.push_message(@uid, push_message)
       end

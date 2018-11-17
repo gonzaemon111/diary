@@ -7,7 +7,7 @@ require "devise"
 require "faker"
 OmniAuth.config.test_mode = true
 
-Dir[Rails.root.join("spec", "support", "**" ,"*.rb")].each { |f| require f }
+Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
