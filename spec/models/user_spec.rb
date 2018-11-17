@@ -38,5 +38,6 @@ RSpec.describe User, type: :model do
   context "association" do
     subject { create(:user) }
     it { is_expected.to have_many(:omniauth_profiles) }
+    it { is_expected.to have_many(:nikkis) }
   end
 end

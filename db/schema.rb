@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_034541) do
+ActiveRecord::Schema.define(version: 2018_11_16_161836) do
 
   create_table "nikkis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "value", null: false
     t.datetime "datetime", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["datetime"], name: "index_nikkis_on_datetime"
+    t.index ["user_id"], name: "index_nikkis_on_user_id"
     t.index ["value"], name: "index_nikkis_on_value"
   end
 

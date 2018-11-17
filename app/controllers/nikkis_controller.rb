@@ -49,7 +49,8 @@ class NikkisController < ApplicationController
       :nikki
     ).permit(
       :value,
-      :datetime
+      :datetime,
+      :user_id
     )
   end
 
