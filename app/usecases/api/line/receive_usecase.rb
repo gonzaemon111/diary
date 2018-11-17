@@ -1,10 +1,10 @@
 module Api
   module Line
-    class ReceiveUsecase
+    class ReceiveUsecase < Api::Line::BaseUsecase
       def initialize(request, params)
         @request = request
-        @client ||= client
         @params = params
+        @client ||= client
       end
 
       def execute

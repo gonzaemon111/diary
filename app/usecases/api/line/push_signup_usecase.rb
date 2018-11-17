@@ -1,11 +1,9 @@
-require "line/bot"
-
 module Api
   module Line
-    class PushSignupUsecase
+    class PushSignupUsecase < BaseUsecase
       def initialize(uid)
-        @client ||= client
         @uid = uid
+        @client ||= client
       end
 
       def execute
@@ -13,21 +11,6 @@ module Api
       end
 
       private
-
-      def client
-        case Rails.env
-        when "development"
-          ::Line::Bot::Client.new { |config|
-            config.channel_secret = Settings.line.messaging_api.channel_secret
-            config.channel_token = Settings.line.messaging_api.channel_token
-          }
-        else
-          ::Line::Bot::Client.new { |config|
-            config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-            config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
-          }
-        end
-      end
 
       def user_signup_message
         {
