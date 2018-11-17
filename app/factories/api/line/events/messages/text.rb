@@ -11,7 +11,7 @@ module Api
           end
 
           def execute
-            return Api::Line::PushDiaryUsecase.new(@event["message"]["text"], @event["source"]["userId"]).execute if is_nikki?
+            return Api::Line::PushDiaryUsecase.new(@event["message"]["text"], @event["source"]["userId"]).execute if nikki?
 
             message = {
               type: "text",
@@ -22,7 +22,7 @@ module Api
 
           private
 
-          def is_nikki?
+          def nikki?
             @event["message"]["text"].include?("nikki") ||
               @event["message"]["text"].include?("日記") ||
               @event["message"]["text"].include?("diary")
