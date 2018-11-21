@@ -11,6 +11,7 @@ module Api
           end
 
           def execute
+            Slack::Notifier.new(ENV["SLACK_WEBHOOK_URL"]).ping("誰かがMyDiaryを友達追加してくれました☺️")
             messages = []
             messages.push follow_message
             messages.push user_signup_message
