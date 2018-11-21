@@ -47,6 +47,8 @@ module Api
           datetime: Time.now.in_time_zone,
           user_id: user.id
         )
+
+        Slack::Notifier.new(ENV["SLACK_WEBHOOK_URL"]).ping("#{user.name}さんが\n日記を作成しました✌️")
         return false unless nikki
 
         nikki
