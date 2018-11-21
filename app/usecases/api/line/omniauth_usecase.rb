@@ -49,6 +49,7 @@ module Api
         )
 
         Api::Line::PushSignupUsecase.new(@omniauth_profile.uid).execute
+        Slack::Notifier.new(ENV["SLACK_WEBHOOK_URL"]).ping("#{user.name}さんがMyDiaryにuser登録しました✌️")
 
         { user: user, omniauth_profile: @omniauth_profile }
       end
