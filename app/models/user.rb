@@ -16,9 +16,9 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, confirmation: true
   validates :sign_in_count, presence: true, numericality: { only_integer: true }
   validates :failed_attempts, presence: true, numericality: { only_integer: true }
-  validates :confirmation_token, uniqueness: true
-  validates :unlock_token, uniqueness: true
-  validates :reset_password_token, uniqueness: true
+  # validates :confirmation_token, uniqueness: true
+  # validates :unlock_token, uniqueness: true
+  # validates :reset_password_token, uniqueness: true
 
   has_many :omniauth_profiles, dependent: :destroy
   has_many :nikkis, dependent: :destroy
