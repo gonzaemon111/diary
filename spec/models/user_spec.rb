@@ -24,9 +24,9 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_numericality_of(:sign_in_count).only_integer }
     it { is_expected.to validate_numericality_of(:failed_attempts).only_integer }
 
-    it { is_expected.to validate_uniqueness_of(:confirmation_token) }
-    it { is_expected.to validate_uniqueness_of(:unlock_token) }
-    it { is_expected.to validate_uniqueness_of(:reset_password_token) }
+    # it { is_expected.to validate_uniqueness_of(:confirmation_token) }
+    # it { is_expected.to validate_uniqueness_of(:unlock_token) }
+    # it { is_expected.to validate_uniqueness_of(:reset_password_token) }
 
     it { is_expected.to validate_length_of(:name).is_at_least(1) }
     it { is_expected.to validate_length_of(:password).is_at_least(6) }
