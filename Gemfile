@@ -64,6 +64,11 @@ group :development, :test do
   gem "shoulda-matchers"
 end
 
+group :test do
+  gem "simplecov", require: false
+  gem "codecov", require: false
+end
+
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"
