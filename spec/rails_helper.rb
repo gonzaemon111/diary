@@ -5,6 +5,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "rspec/rails"
 require "devise"
 require "faker"
+require "line/bot"
 OmniAuth.config.test_mode = true
 
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
