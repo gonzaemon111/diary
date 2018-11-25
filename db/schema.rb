@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_161836) do
+ActiveRecord::Schema.define(version: 2018_11_25_044034) do
 
   create_table "nikkis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "value", null: false
@@ -52,6 +52,19 @@ ActiveRecord::Schema.define(version: 2018_11_16_161836) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uid", "provider"], name: "index_profiles_on_uid_and_provider"
+  end
+
+  create_table "reminders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "value", null: false
+    t.datetime "execute_time", null: false
+    t.boolean "is_finished", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["execute_time"], name: "index_reminders_on_execute_time"
+    t.index ["is_finished"], name: "index_reminders_on_is_finished"
+    t.index ["user_id"], name: "index_reminders_on_user_id"
+    t.index ["value"], name: "index_reminders_on_value"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

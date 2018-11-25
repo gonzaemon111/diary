@@ -37,7 +37,33 @@ RSpec.describe User, type: :model do
 
   context "association" do
     subject { create(:user) }
-    it { is_expected.to have_many(:omniauth_profiles) }
-    it { is_expected.to have_many(:nikkis) }
+    it { is_expected.to have_many(:omniauth_profiles).dependent(:destroy) }
+    it { is_expected.to have_many(:nikkis).dependent(:destroy) }
+    it { is_expected.to have_many(:reminders).dependent(:destroy) }
+  end
+
+  context "db" do
+    subject { create(:user) }
+    it { is_expected.to have_db_column(:name).of_type(:string).with_options(default: "", null: false) }
+    it { is_expected.to have_db_column(:email).of_type(:string) }
+    it { is_expected.to have_db_column(:encrypted_password).of_type(:string).with_options(default: "", null: false) }
+    it { is_expected.to have_db_column(:reset_password_token).of_type(:string) }
+    it { is_expected.to have_db_column(:reset_password_sent_at).of_type(:datetime) }
+    it { is_expected.to have_db_column(:remember_created_at).of_type(:datetime) }
+    it { is_expected.to have_db_column(:sign_in_count).of_type(:integer) }
+    it { is_expected.to have_db_column(:current_sign_in_ip).of_type(:string) }
+    it { is_expected.to have_db_column(:last_sign_in_ip).of_type(:string) }
+    it { is_expected.to have_db_column(:current_sign_in_at).of_type(:datetime) }
+    it { is_expected.to have_db_column(:confirmed_at).of_type(:datetime) }
+    it { is_expected.to have_db_column(:confirmation_sent_at).of_type(:datetime) }
+    it { is_expected.to have_db_column(:unconfirmed_email).of_type(:string) }
+    it { is_expected.to have_db_column(:unlock_token).of_type(:string) }
+    it { is_expected.to have_db_column(:created_at).of_type(:datetime) }
+    it { is_expected.to have_db_column(:updated_at).of_type(:datetime) }
+
+    it { should have_db_index(:confirmation_token) }
+    it { should have_db_index(:reset_password_token) }
+    it { should have_db_index(:unlock_token) }
+    it { should have_db_index(:name) }
   end
 end

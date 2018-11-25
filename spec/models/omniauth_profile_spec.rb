@@ -30,4 +30,28 @@ RSpec.describe OmniauthProfile, type: :model do
     subject { create(:omniauth_profile) }
     it { is_expected.to belong_to(:user) }
   end
+
+  context "db" do
+    subject { create(:omniauth_profile) }
+
+    it { is_expected.to have_db_column(:uid).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:name).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:image).of_type(:string) }
+    it { is_expected.to have_db_column(:description).of_type(:string) }
+    it { is_expected.to have_db_column(:email).of_type(:string) }
+    it { is_expected.to have_db_column(:token).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:refresh_token).of_type(:string).with_options(null: false) }
+    it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
+    it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
+
+    it { should have_db_index(:description) }
+    it { should have_db_index(:email) }
+    it { should have_db_index(:user_id) }
+    it { should have_db_index(:image) }
+    it { should have_db_index(:name) }
+    it { should have_db_index(:provider) }
+    it { should have_db_index(:refresh_token) }
+    it { should have_db_index(:token) }
+    it { should have_db_index(:uid) }
+  end
 end
