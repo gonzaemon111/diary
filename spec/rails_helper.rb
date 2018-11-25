@@ -6,7 +6,11 @@ require "rspec/rails"
 require "devise"
 require "faker"
 require "line/bot"
+require "simplecov"
+require "codecov"
 OmniAuth.config.test_mode = true
+
+SimpleCov.start
 
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
 
@@ -28,4 +32,7 @@ RSpec.configure do |config|
   config.after(:all) do
     FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"]) if Rails.env.test?
   end
+
+  SimpleCov.start
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
