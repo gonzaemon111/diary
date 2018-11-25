@@ -1,4 +1,7 @@
 # Diary
+
+[![codecov](https://codecov.io/gh/gonzaemon111/diary/branch/master/graph/badge.svg)(https://codecov.io/gh/gonzaemon111/diary)
+
 Things you may want to cover:
 
 * Ruby version
