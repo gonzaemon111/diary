@@ -271,3 +271,16 @@ Message::Textの場合
   }
 }
 ```
+
+
+### Sidekiq , Wheneverの設定
+
+- crontabに設定する際のコマンドは次のとおり。
+
+```
+# wheneverの設定更新
+$ RAILS_ENV=development bundle exec whenever --update-crontab
+
+# crontabの設定削除
+$ RAILS_ENV=development bundle exec whenever --clear-crontab
+```
