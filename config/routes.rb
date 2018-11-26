@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "nikkis#index"
+  resources :monitors, only: %i[index]
 
   devise_for :users, controllers: {
     omniauth_callbacks: "api/omniauth_callback"
