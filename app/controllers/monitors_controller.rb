@@ -4,6 +4,7 @@ class MonitorsController < ApplicationController
   end
 
   private
+
   def devise_controller?
     false
   end
