@@ -11,6 +11,7 @@ module Api
           end
 
           def execute
+            return Api::Line::PushTaskUsecase.new(@event["message"]["text"], @event["source"]["userId"]).execute if task?
             return Api::Line::PushDiaryUsecase.new(@event["message"]["text"], @event["source"]["userId"]).execute if nikki?
 
             message = {
@@ -21,6 +22,13 @@ module Api
           end
 
           private
+
+          def task?
+            @event["message"]["text"].include?("task") ||
+              @event["message"]["text"].include?("タスク") ||
+              @event["message"]["text"].include?("リマインド") ||
+              @event["message"]["text"].include?("リマインダー")
+          end
 
           def nikki?
             @event["message"]["text"].include?("nikki") ||
