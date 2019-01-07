@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     post "line/callback" => "line#callback"
+    get "tasks/finish" => "tasks#finish"
   end
 
   resources :nikkis
