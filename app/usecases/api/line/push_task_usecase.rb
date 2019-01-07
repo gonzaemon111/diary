@@ -13,7 +13,7 @@ module Api
           task = task_create(result)
           push_messages(task)
         else
-          return false
+          false
         end
       end
 
@@ -22,7 +22,6 @@ module Api
       def task_split
         messages = @nikki.split("\n")
 
-        # date_time = DateTime.parse(messages[1])
         return false if messages[1].class != String
 
         value = messages[2]
@@ -33,8 +32,6 @@ module Api
 
       def task_create(result)
         user = OmniauthProfile.find_by(uid: @uid).user
-
-        Rails.logger.debug "ここだよ#{result} , #{user.id}"
 
         task = Task.create!(
           value: result[:value],
