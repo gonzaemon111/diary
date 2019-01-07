@@ -18,7 +18,7 @@ module Api
                     {
                       "type": "uri",
                       "label": "タスクを終了する",
-                      "uri": Constants::URL + "/api/tasks/finsh?is_done=finish&user_id=#{@task.user_id}&task_id=#{@task.id}"
+                      "uri": Constants::URL + "/api/tasks/finish?is_done=finish&user_id=#{@task.user_id}&task_id=#{@task.id}"
                     }
                   ],
                   "thumbnailImageUrl": "https://cdn.pixabay.com/photo/2015/06/24/16/36/office-820390_960_720.jpg",
@@ -38,7 +38,7 @@ module Api
                     {
                       "type": "uri",
                       "label": "タスクを終了する",
-                      "uri": Constants::URL + "/api/tasks/finsh?is_done=finish&user_id=#{@task.user_id}&task_id=#{@task.id}"
+                      "uri": Constants::URL + "/api/tasks/finish?is_done=finish&user_id=#{@task.user_id}&task_id=#{@task.id}"
                     }
                   ],
                   "thumbnailImageUrl": "https://cdn.pixabay.com/photo/2015/06/24/16/36/office-820390_960_720.jpg",
