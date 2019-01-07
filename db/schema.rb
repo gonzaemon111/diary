@@ -69,15 +69,15 @@ ActiveRecord::Schema.define(version: 2019_01_05_144411) do
 
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "task", null: false
+    t.string "value", null: false
     t.datetime "date_time", null: false
     t.boolean "is_done", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["date_time"], name: "index_tasks_on_date_time"
     t.index ["is_done"], name: "index_tasks_on_is_done"
-    t.index ["task"], name: "index_tasks_on_task"
     t.index ["user_id"], name: "index_tasks_on_user_id"
+    t.index ["value"], name: "index_tasks_on_value"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
