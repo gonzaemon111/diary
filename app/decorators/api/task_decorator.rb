@@ -1,4 +1,4 @@
- module Api 
+module Api
   class TaskDecorator < Draper::Decorator
     delegate_all
 
