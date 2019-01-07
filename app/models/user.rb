@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   has_many :omniauth_profiles, dependent: :destroy
   has_many :nikkis, dependent: :destroy
+  has_many :tasks, dependent: :destroy
   has_many :reminders, dependent: :destroy
 
   # 登録時にemailを不要とする オーバーライド

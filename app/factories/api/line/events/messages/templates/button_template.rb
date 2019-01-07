@@ -4,37 +4,46 @@ module Api
       module Messages
         module Templates
           class ButtonTemplate
-            def initialize; end
+            def initialize(task)
+              @task = task
+            end
 
             def execute
               {
                 "type": "template",
-                "altText": "This is a buttons template",
+                "altText": "this is a buttons template",
                 "template": {
                   "type": "buttons",
-                  "thumbnailImageUrl": "https://images.unsplash.com/photo-1534989713668-e6c993fd1554?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5d8b8f376e6302a259ceb828475527cc&auto=format&fit=crop&w=1100&q=80",
-                  "imageAspectRatio": "rectangle",
-                  "imageSize": "cover",
-                  "imageBackgroundColor": "#000000",
-                  "title": "本日の日記",
-                  "text": "作成しますか？",
-                  "defaultAction": {
-                    "type": "uri",
-                    "label": "View detail",
-                    "uri": "https://gonzodiary.herokuapp.com/"
-                  },
                   "actions": [
                     {
-                      "type": "postback",
-                      "label": "はい",
-                      "data": "no"
-                    },
-                    {
-                      "type": "postback",
-                      "label": "いいえ",
-                      "data": "no"
+                      "type": "uri",
+                      "label": "タスクを終了する",
+                      "uri": Constants::URL + "/tasks/finsh?is_done=finish&user_id=#{@task.user_id}&task_id=#{@task.id}"
                     }
-                  ]
+                  ],
+                  "thumbnailImageUrl": "https://cdn.pixabay.com/photo/2015/06/24/16/36/office-820390_960_720.jpg",
+                  "title": @task.value,
+                  "text": "リマインダーを作成しました。"
+                }
+              }
+            end
+
+            def remind
+              {
+                "type": "template",
+                "altText": "this is a buttons template",
+                "template": {
+                  "type": "buttons",
+                  "actions": [
+                    {
+                      "type": "uri",
+                      "label": "タスクを終了する",
+                      "uri": Constants::URL + "/tasks/finsh?is_done=finish&user_id=#{@task.user_id}&task_id=#{@task.id}"
+                    }
+                  ],
+                  "thumbnailImageUrl": "https://cdn.pixabay.com/photo/2015/06/24/16/36/office-820390_960_720.jpg",
+                  "title": @task.value,
+                  "text": "リマインダーとしてのお知らせです。"
                 }
               }
             end
