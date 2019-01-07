@@ -1,0 +1,4 @@
+ja:
+  messages:
+    reminder:
+      make: "%{name}さんが\nリマインダーを設定しました✌️\n内容 : %{value}\n日時 : %{date_time}"
