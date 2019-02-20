@@ -1,6 +1,0 @@
-test:
-  adapter: mysql2
-  host: 127.0.0.1
-  database: diary_test
-  username: travis
-  encoding: utf8
