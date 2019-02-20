@@ -1,5 +1,5 @@
 # Diary
-
+[![CircleCI](https://circleci.com/gh/gonzaemon111/diary/tree/master.svg?style=svg)](https://circleci.com/gh/gonzaemon111/diary/tree/master)
 ![codecov](https://codecov.io/gh/gonzaemon111/diary/branch/master/graph/badge.svg)
 (https://codecov.io/gh/gonzaemon111/diary)
 
