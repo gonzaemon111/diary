@@ -13,6 +13,7 @@ env:
 services:
 - mysql
 - redis-server
+- imagemagick
 before_script:
 - cp -f .env.example .env
 - cp -f config/database.travis.yml config/database.yml
