@@ -32,3 +32,4 @@ config/environments/*.local.yml
 .env
 coverage/*
 .docker-sync/*
+.cache/*
