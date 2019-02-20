@@ -257,12 +257,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  case Rails.env
-  when "development"
-    config.omniauth :line, Settings.line.login.channel_id, Settings.line.login.channel_secret
-  else
-    config.omniauth :line, ENV["LINE_LOGIN_CHANNEL_ID"], ENV["LINE_LOGIN_CHANNEL_SECRET"]
-  end
+
+  config.omniauth :line, ENV["LINE_LOGIN_CHANNEL_ID"], ENV["LINE_LOGIN_CHANNEL_SECRET"]
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

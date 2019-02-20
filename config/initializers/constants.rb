@@ -8,7 +8,7 @@ module Constants
 
   URL = case Rails.env
         when "development"
-          Settings.network.url.ngrok
+          ENV["NGROK_URL"]
         else
           "https://gonzodiary.herokuapp.com"
         end
