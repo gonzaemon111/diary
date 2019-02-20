@@ -2,7 +2,7 @@ module Api
   module Line
     class PushMessageUsecase < BaseUsecase
       def initialize(nikki)
-        @client ||= client
+        @client = client
         @datetime = nikki[:datetime]
         @value = nikki[:value]
         @user_id = ENV["LINE_USER_ID"] || Settings.line.messaging_api.user_id # あとはここだけ、修正する必要がある。
