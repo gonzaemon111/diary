@@ -45,7 +45,7 @@ jobs:
           command: touch .env && cp circleci.env .env
 
       - run:
-          command: cp config/database.yml.circleci config/database.yml
+          command: cp config/database.circle.yml config/database.yml
 
       - run:
           command: bundle exec rails db:create RAILS_ENV=test
