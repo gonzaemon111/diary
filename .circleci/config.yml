@@ -1,0 +1,72 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/circleci-demo-ruby-rails
+    docker:
+      - image: circleci/ruby:2.6.1-browsers
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --innodb-large-prefix=true --innodb-file-format=Barracuda
+      - image: circleci/openjdk:8-jdk
+      - image: docker.elastic.co/elasticsearch/elasticsearch:5.6.13
+      - image: circleci/redis
+      - image: circleci/mongo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v2-
+
+      - run:
+          name: bundle install dependencies
+          command: bundle install --path vendor/bundle
+
+      - save_cache:
+          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+    
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.5.0
+
+      - run:
+          name: Wait for db
+          command: ./dockerize -wait tcp://localhost:3306 -timeout 1m
+
+      - run:
+          command: touch .env && cp circleci.env .env
+
+      - run:
+          command: cp config/database.circle.yml config/database.yml
+
+      - run:
+          command: bundle exec rails db:create RAILS_ENV=test
+
+      - run:
+          command: bundle exec rails db:migrate RAILS_ENV=test
+
+      - run:
+          name: RuboCop Style Check
+          command: bundle exec rubocop
+
+      - run:
+          name: Rspec
+          command: bundle exec rspec --color --require spec_helper spec/.
+
+      - store_test_results:
+          path: spec
+  
+      - deploy:
+          name: heroku deploy to master branch (environment staging_heroku)
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+            fi

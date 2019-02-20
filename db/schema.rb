@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_01_05_144411) do
 
-  create_table "nikkis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "nikkis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "value", null: false
     t.datetime "datetime", null: false
     t.datetime "created_at", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_01_05_144411) do
     t.index ["value"], name: "index_nikkis_on_value"
   end
 
-  create_table "omniauth_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "omniauth_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "user_id"
     t.string "uid", null: false
     t.integer "provider", default: 0, null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_01_05_144411) do
     t.index ["user_id"], name: "index_omniauth_profiles_on_user_id"
   end
 
-  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "uid", null: false
     t.integer "provider", default: 0, null: false
     t.datetime "created_at", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2019_01_05_144411) do
     t.index ["uid", "provider"], name: "index_profiles_on_uid_and_provider"
   end
 
-  create_table "reminders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "reminders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "value", null: false
     t.datetime "execute_time", null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2019_01_05_144411) do
     t.index ["value"], name: "index_reminders_on_value"
   end
 
-  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "value", null: false
     t.datetime "date_time", null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_01_05_144411) do
     t.index ["value"], name: "index_tasks_on_value"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email"
     t.string "encrypted_password", default: "", null: false

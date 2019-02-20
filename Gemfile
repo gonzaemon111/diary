@@ -1,7 +1,9 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.5.1"
+ruby "2.6.1"
+
+gem "mongoid"
 
 gem "activeadmin"
 gem "acts-as-taggable-on"
@@ -17,6 +19,7 @@ gem "chartkick"
 gem "config"
 gem "devise"
 gem "devise_invitable"
+gem "docker-sync", "0.5.9"
 gem "dotenv-rails"
 gem "draper"
 gem "enum_help"
@@ -32,6 +35,7 @@ gem "kaminari"
 gem "line-bot-api"
 gem "meta-tags"
 gem "mini_magick", "~> 4.8"
+gem "mini_racer"
 gem "mysql2", ">= 0.4.4", "< 0.6.0"
 gem "omniauth-line"
 gem "puma", "~> 3.11"

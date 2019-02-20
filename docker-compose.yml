@@ -1,0 +1,49 @@
+version: "3"
+services:
+  diary_db:
+    image: mysql:5.7
+    ports:
+      - "3308:3306"
+      - "33080:33060"
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: diary
+      MYSQL_SOCKET: "/var/lib/mysql/mysql.sock"
+      MYSQL_HOST: diary_db
+  
+  diary_redis:
+    image: redis:alpine
+    ports:
+      - "6389:6379"
+  
+  diary_mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    command: --smallfiles
+
+  diary:
+    build: .
+    container_name: diary
+    env_file:
+      - .env
+    tty: true #標準出力on
+    stdin_open: true
+    depends_on:
+      - diary_db
+      - diary_redis
+      - diary_mongodb
+    ports:
+      - "3030:3000"
+    volumes:
+      - diary-server-sync:/home/diary
+    command: >
+              bash -c '
+              bundle exec rails db:create && 
+              bundle exec rails db:migrate &&
+              bundle exec sidekiq -C config/sidekiq.yml -d &&
+              bundle exec rails server -b 0.0.0.0'
+
+volumes:
+  diary-server-sync:
+    external: true

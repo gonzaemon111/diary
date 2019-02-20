@@ -3,7 +3,7 @@
 
 # 自動生成されるものはチェック対象から除外する
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.6
   Exclude:
     - "vendor/**/*" # rubocop config/default.yml
     - "db/schema.rb"
@@ -114,8 +114,8 @@ Style/FormatString:
   EnforcedStyle: percent
 
 # if 文の中に 3 行程度のブロックを書くぐらいは許容した方が現実的
-Style/GuardClause:
-  MinBodyLength: 5
+# Style/GuardClause:
+#   MinBodyLength: 5
 
 # rake タスクの順序の hash は rocket を許可する
 Style/HashSyntax:
@@ -198,9 +198,9 @@ Layout/CommentIndentation:
   Enabled: false
 
 # 桁揃えが綺麗にならないことが多いので migration は除外
-Layout/ExtraSpacing:
-  Exclude:
-    - "db/migrate/*.rb"
+# Layout/ExtraSpacing:
+#   Exclude:
+#     - "db/migrate/*.rb"
 
 # ({ と hash を開始した場合に ( の位置にインデントさせる
 # そもそも {} が必要ない可能性が高いが Style/BracesAroundHashParameters はチェックしないことにしたので
@@ -227,11 +227,11 @@ Layout/EndAlignment:
   Description: 'Align ends correctly.'
   Enabled: true
 
-Layout/SpaceBeforeFirstArg:
-  Description: >-
-                 Put a space between a method name and the first argument
-                 in a method call without parentheses.
-  Enabled: true
+# Layout/SpaceBeforeFirstArg:
+#   Description: >-
+#                  Put a space between a method name and the first argument
+#                  in a method call without parentheses.
+#   Enabled: true
 
 #################### Lint ################################
 ### Warnings
@@ -396,6 +396,7 @@ Metrics/LineLength:
   Max: 250
   Exclude:
     - "db/migrate/*.rb"
+    - "spec/**/*"
 
 # 20 行超えるのは migration ファイル以外滅多に無い
 Metrics/MethodLength:
