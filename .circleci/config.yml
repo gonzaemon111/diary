@@ -59,7 +59,7 @@ jobs:
 
       - run:
           name: Rspec
-          command: bundle exec rspec --color --require spec_helper --format progress --format RspecJunitFormatter --out spec/rspec.xml spec/.
+          command: bundle exec rspec --color --require spec_helper spec/.
 
       - store_test_results:
           path: spec
